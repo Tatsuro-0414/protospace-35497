@@ -6,6 +6,7 @@ class Prototype < ApplicationRecord
       validates :concept, presence: true
       validates :title, presence: true
       
+      
 
 
 
