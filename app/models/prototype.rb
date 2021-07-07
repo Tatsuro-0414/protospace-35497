@@ -6,8 +6,8 @@ class Prototype < ApplicationRecord
       validates :concept, presence: true
       validates :title, presence: true
       
-      
-
+      has_many :comments  # commentsテーブルとのアソシエーション
+ 
 
 
 end

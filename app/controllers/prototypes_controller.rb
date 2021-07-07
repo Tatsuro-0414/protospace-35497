@@ -19,6 +19,12 @@ class PrototypesController < ApplicationController
 
   def show
     @prototype = Prototype.find(params[:id])
+    @comment = Comment.new
+    @comments = @prototype.comments.includes(:user)
+    
+    
+
+
   end
 
   def destroy
@@ -30,6 +36,11 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype= Prototype.find(params[:id])
+    if@prototype.edit(prototype_params)
+      redirect_to prototype_path
+    else
+      render :index
+    end
 
 
 
