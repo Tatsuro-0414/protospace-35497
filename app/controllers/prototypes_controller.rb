@@ -1,6 +1,9 @@
 class PrototypesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @prototypes = Prototype.all
+
   end
 
   def new
@@ -36,14 +39,13 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype= Prototype.find(params[:id])
-    if@prototype.edit(prototype_params)
-      redirect_to prototype_path
-    else
-      render :index
+
+    if @prototype.user.id != current_user.id
+      redirect_to root_path
     end
 
 
-
+    
   end
 
   def update

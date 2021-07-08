@@ -1,4 +1,5 @@
 class Prototype < ApplicationRecord
+      has_many :comments, dependent: :destroy
       belongs_to :user
       has_one_attached :image
       validates :catch_copy, presence: true
@@ -6,7 +7,7 @@ class Prototype < ApplicationRecord
       validates :concept, presence: true
       validates :title, presence: true
       
-      has_many :comments  # commentsテーブルとのアソシエーション
+      
  
 
 
